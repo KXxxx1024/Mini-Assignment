@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Number Guessing Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <style>
+        /* body{
+        background: linear-gradient(
+        to right,
+        #7f53ac,
+        #657ced
+        );
+    } */
+    body{
+        background-image: url("background.jpg");
+        background-repeat: no-repeat;  
+        background-position: 0% 0%;
+        background-size: 100% 100%;    
+    }
+    h2{
+        text-align: center;
+        color: red;
+    }
+    .container{
+        position: absolute;
+        width: 50%;
+        top: 30%;
+        left: 25%; 
+        background-color: rgb(255, 255, 255,0.6);
+        padding: 50px 10px;
+        border-radius: 5px;
+        font-family: 'Poppins',sans-serif;
+    }
+    #btn{
+        border-radius: 5px;
+        text-align: center;
+        margin-left: 45%;
+        padding: 12px;
+        background-color: white;
+    }
+    #btn:hover{
+        background-color: #ccccff;
+        transform: scale(1.5);
+    }
+    /* #img:hover{
+        transform: scale(1.24);
+    } */
+    </style>
+    <body>
+        <!-- <audio id="audio" src="sound/Mood.mp3" type="audio/mpeg"></audio> -->
+        <div class="container">
+            <!-- <img id="img" src="play-button-icon.jpg" height="80" width="80"> -->
+            <h2><big>I am thinking of a number between 0-100.</big></h2>
+            <h2><big>Can you guess it?</big></h2>
+            <button onclick="start()" id="btn"><b>GUESS</b></button>
+            <!-- <div>&nbsp;</div> -->
+        </div>
+    </body>
+    <script>
+        // var img = document.getElementById("img");
+        // var audio = document.getElementById("audio");
+        // img.addEventListener("load" , function(){
+        //     img.autoplay=true;
+        // });
+        // img.addEventListener("click" , function(){
+        //     if(audio.paused){
+        //         audio.play();
+        //         audio.volume=0.2;
+        //         audio.loop = true;
+        //         audio.autoplay = true;
+        //         img.src = "pause-button-icon.jpg";                
+        //     }else{
+        //         audio.pause();
+        //         img.src = "play-button-icon.jpg";     
+        //     }
+        // });
+        function start(){
+            window.location.href = "player.html"
+        }
+    </script>
+</html>

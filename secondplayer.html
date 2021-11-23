@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <title>Number Guessing Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <style>
+    body{
+        text-align: center;
+        margin-top: 12%;
+        background-image: url("pback.jpg");
+        background-repeat: no-repeat;  
+        background-position: 0% 0%;
+        background-size: 100% 100%;
+    }
+    #player2{
+        margin-bottom: 2%;
+        font-size:xx-large;
+        text-align: center;
+        color: #cd5c5c;
+    }
+    .title{
+        font-size:xx-large;
+        text-align: center;
+        color: white;
+    }
+    input{
+        justify-items: center;
+        width: 100px;
+        font-weight: 600;
+        color: #663399;
+        padding: 20px 0;
+        text-align: center;
+        margin-top: 30px;
+        border-radius: 5px;
+        border: 2px solid #202020;
+        font-size: 20px;
+    }
+    input:hover{
+        transform: scale(1.25);
+    }
+    p{
+        font-size:larger;
+        font-weight: 800;
+    }
+    #play{
+        border: 2px solid;
+        border-radius: 5px;
+        padding: 12px;
+        background-color: white;
+    }
+    #play:hover{
+        background-color: #ccccff;
+        transform: scale(1.25);
+    }
+    p{
+        color: white;
+        font-size:x-large;
+    }
+    </style>
+    <body>
+        <div>
+            <p id="name"></p>
+            <div id="player2"><b>PLAYER 2:</b></div>
+            <div class="title"><b>GUESSING NUMBER BETWEEN 0-100</b></div>
+            <input type="number" placeholder="NUM" id="guess"><br>
+            <div>&nbsp;</div>
+            <button onclick="play()" id="play"><b><big>CHECK</big></b></button><br>
+            <p id="message1">No. of Guesses: 0</p>
+            <p id="message2">Guessed Numbers are: None</p>
+            <p id="message3"></p>
+        </div>
+    </body>
+    <script>
+        var name2 = document.getElementById("name")
+        name2 =  prompt("Enter player 2's name");
+        if(name2==0){
+            alert("Please enter player 2's name");
+            window.location.reload();
+            // prompt("Enter player 2's name");
+        }
+        document.getElementById("player2").innerHTML="Player 2: " + name2;
+        document.getElementById("player2").style.fontWeight=750;
+
+        var msg1 = document.getElementById("message1");
+        var msg2 = document.getElementById("message2");
+        var msg3 = document.getElementById("message3");
+
+        var answer = Math.round(Math.random()*100);
+        var no_of_guesses2 = 1;
+        var guessed_nums = [];
+        var min = 0;
+        var max = 100;
+        function play(){
+            var user_guess = document.getElementById("guess").value;
+            if(user_guess == 0){
+                document.getElementById("guess").value=" ";
+                alert("Please insert a number!!!");
+            }else if(user_guess < 0 || user_guess > 100){
+                document.getElementById("guess").value=" ";
+                alert("Invalid input!! Please insert a number between " + min + " and " + max + ".");
+            }else if(user_guess < answer){
+                min = user_guess;
+                document.getElementById("guess").value=" ";
+                msg1.textContent = "Guess between " + min + " to " + max + ".";
+                msg2.textContent = "No. of guesses: " + no_of_guesses2;
+                guessed_nums.push(user_guess);
+                msg3.textContent = "Guessed numbers are: " +
+                guessed_nums;
+                no_of_guesses2+= 1;
+                if(no_of_guesses2 == 8){
+                alert("Don't give up!!! Keep guessing!!");
+                }
+                //alert(answer);
+            }else if(user_guess > answer){
+                max = user_guess;
+                document.getElementById("guess").value=" ";
+                msg1.textContent = "Guess between " + min + " to " + max + ".";
+                msg2.textContent = "No. of guesses: " + no_of_guesses2;
+                guessed_nums.push(user_guess);
+                msg3.textContent = "Guessed numbers are: " +
+                guessed_nums;
+                no_of_guesses2+= 1;
+                if(no_of_guesses2 == 8){
+                alert("Don't give up!!! Keep guessing!!");
+                }
+                //alert(answer);
+            }else if(user_guess == answer){
+                msg1.textContent = "Yes, you guessed it!!";
+                msg2.textContent = "The number was: " + answer;
+                msg3.textContent = "You guessed it in "+ no_of_guesses2 + " guesses";
+                document.getElementById("play").innerHTML = "RESULT";
+                document.getElementById("play").style.fontWeight = 780;
+                document.getElementById("play").style.fontSize = 15;
+                    NOG = "You guessed it in "+ no_of_guesses2 + " guesses";
+                    alert("Yes, you guessed it!!")
+                    alert(NOG)
+                    var result=confirm("Would you want to check the result?");
+                    if(result){
+                        var nog1 = localStorage.getItem("nog1");
+                        var nog = nog1;
+                        localStorage.setItem("nog1" , nog)
+                        var n1 = localStorage.getItem("n1");
+                        var name1 = n1;
+                        var nog2 = no_of_guesses2;
+                        localStorage.setItem("nog2" , nog2);
+                        var n2 = name2;
+                        localStorage.setItem("n2" , n2)
+                        window.location.href="result.html";
+                    }
+            }
+        }
+    </script>
+</html>
